@@ -61,6 +61,11 @@ textarea.form-control {
   resize: vertical;
 }
 
+.form-control option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
 .form-submit {
   width: 100%;
   margin-top: 1rem;

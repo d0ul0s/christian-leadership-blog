@@ -4,7 +4,7 @@
   height: calc(100vh - 80px); /* Height minus navbar */
   margin: 0;
   overflow: hidden;
-  background: var(--bg-dark);
+  background: var(--bg-primary);
 }
 
 /* Sidebar */

@@ -331,8 +331,13 @@ const Admin = () => {
 
             <div className="form-group">
               <label>Full Content (Rich Text)</label>
-              <div style={{ backgroundColor: '#fff', color: '#000', borderRadius: '4px', overflow: 'hidden' }}>
-                <ReactQuill theme="snow" value={formData.content} onChange={handleContentChange} style={{ height: '300px', marginBottom: '40px' }} />
+              <div style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
+                <ReactQuill 
+                  theme="snow" 
+                  value={formData.content} 
+                  onChange={handleContentChange} 
+                  style={{ height: '300px', marginBottom: '40px' }} 
+                />
               </div>
             </div>
             
@@ -365,7 +370,7 @@ const Admin = () => {
                 value={formData.status} 
                 onChange={handleChange} 
                 className="form-control"
-                style={{ background: 'var(--bg-dark)', color: 'var(--text-primary)', border: '1px solid var(--glass-border)', padding: '0.6rem', borderRadius: '8px', width: '100%', cursor: 'pointer' }}
+                style={{ background: 'var(--bg-secondary)', color: 'var(--text-primary)', border: '1px solid var(--glass-border)', padding: '0.6rem', borderRadius: '8px', width: '100%', cursor: 'pointer' }}
               >
                 <option value="draft">Draft (Private)</option>
                 <option value="pending">Pending Review (Waiting for Editor)</option>

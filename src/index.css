@@ -104,7 +104,18 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Better text selection */
+::selection {
+  background-color: var(--accent-gold);
+  color: #000;
+}
+
+::-moz-selection {
+  background-color: var(--accent-gold);
+  color: #000;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -221,7 +232,7 @@ body[data-animation="none"] .delay-300 {
   justify-content: center;
   padding: 0.75rem 1.5rem;
   background-color: var(--accent-gold);
-  color: var(--bg-primary);
+  color: #1a1a1a; /* Dark text on gold button for maximum contrast */
   font-weight: 600;
   border-radius: 30px;
   transition: var(--transition-smooth);
