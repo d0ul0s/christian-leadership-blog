@@ -61,7 +61,7 @@ const Register = () => {
         if (data.requiresVerification) {
           navigate('/verify', { state: { userId: data.userId, email: formData.email } });
         } else {
-          login({ _id: data._id, fullName: data.fullName, email: data.email, isAdmin: data.isAdmin, profilePicture: data.profilePicture });
+          login(data);
           setMessage({ type: 'success', text: 'Registration successful! You are now signed in.' });
           setFormData({ fullName: '', email: '', password: '' });
           setProfilePic(null);

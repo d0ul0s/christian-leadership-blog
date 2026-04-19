@@ -35,7 +35,7 @@ const VerifyEmail = () => {
       const data = await response.json();
       
       if (response.ok) {
-        login({ _id: data._id, fullName: data.fullName, email: data.email, isAdmin: data.isAdmin, profilePicture: data.profilePicture });
+        login(data);
         navigate('/');
       } else {
         setMessage({ type: 'error', text: data.message || 'Verification failed' });

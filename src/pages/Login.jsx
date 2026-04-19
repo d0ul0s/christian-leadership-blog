@@ -32,7 +32,7 @@ const Login = () => {
       const data = await response.json();
       
       if (response.ok) {
-        login({ _id: data._id, fullName: data.fullName, email: data.email, isAdmin: data.isAdmin });
+        login(data);
         setMessage({ type: 'success', text: 'Login successful! Taking you to the essays...' });
         
         // Redirect to exact destination
