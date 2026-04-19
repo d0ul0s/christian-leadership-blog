@@ -18,7 +18,14 @@ const Navbar = () => {
   const getAvatarUrl = (path) => {
     if (!path) return null;
     if (path.startsWith('http')) return path;
-    return `${import.meta.env.VITE_API_URL}${path}`;
+    
+    // Safety check for VITE_API_URL trailing slash
+    const baseUrl = import.meta.env.VITE_API_URL.endsWith('/') 
+      ? import.meta.env.VITE_API_URL.slice(0, -1) 
+      : import.meta.env.VITE_API_URL;
+      
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `${baseUrl}${cleanPath}`;
   };
 
   useEffect(() => {

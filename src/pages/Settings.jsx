@@ -237,6 +237,16 @@ const Settings = () => {
     );
   }
 
+  const getAvatarUrl = (path) => {
+    if (!path) return null;
+    if (path.startsWith('http')) return path;
+    const baseUrl = (import.meta.env.VITE_API_URL || '').endsWith('/') 
+      ? import.meta.env.VITE_API_URL.slice(0, -1) 
+      : import.meta.env.VITE_API_URL;
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `${baseUrl}${cleanPath}`;
+  };
+
   return (
     <div className="animate-fade-in" style={{ padding: '4rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
       <SEO title="Settings" description="Update your user profile and settings" />
@@ -282,8 +292,9 @@ const Settings = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
             {currentUser.profilePicture ? (
               <img 
-                src={`${import.meta.env.VITE_API_URL}${currentUser.profilePicture}`} 
+                src={getAvatarUrl(currentUser.profilePicture)} 
                 alt="Profile" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + currentUser.fullName + "&background=random";}}
                 style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--accent-gold)' }} 
               />
             ) : (
