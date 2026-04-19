@@ -107,8 +107,18 @@
 
 .rich-text-content p, 
 .rich-text-content li, 
-.rich-text-content span {
+.rich-text-content span,
+.rich-text-content strong,
+.rich-text-content em,
+.rich-text-content u,
+.rich-text-content h1, 
+.rich-text-content h2, 
+.rich-text-content h3,
+.rich-text-content h4,
+.rich-text-content h5,
+.rich-text-content h6 {
   color: inherit !important;
+  background-color: transparent !important;
 }
 
 .rich-text-content p {
@@ -162,7 +172,7 @@
 }
 
 .rich-text-content strong {
-  color: var(--text-primary);
+  color: inherit !important;
   font-weight: 700;
 }
 
