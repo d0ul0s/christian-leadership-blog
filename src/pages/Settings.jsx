@@ -66,7 +66,7 @@ const Settings = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        login({ ...currentUser, fullName: data.fullName, email: data.email });
+        login(data);
         setInfoMessage({ type: 'success', text: 'Profile info updated!' });
       } else {
         setInfoMessage({ type: 'error', text: data.message || 'Update failed' });
@@ -136,7 +136,7 @@ const Settings = () => {
       const data = await response.json();
       
       if (response.ok) {
-        login({ ...currentUser, profilePicture: data.profilePicture });
+        login(data);
         setPicMessage({ type: 'success', text: 'Profile picture updated!' });
         setProfilePic(null);
         document.getElementById('profilePicture').value = '';
@@ -165,7 +165,7 @@ const Settings = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        login({ ...currentUser, profilePicture: '' });
+        login(data);
         setPicMessage({ type: 'success', text: 'Profile picture removed!' });
         setProfilePic(null);
         if (document.getElementById('profilePicture')) document.getElementById('profilePicture').value = '';
@@ -191,7 +191,7 @@ const Settings = () => {
       });
       const data = await res.json();
       if (res.ok) {
-        login({ ...currentUser, authorName: data.authorName, authorBio: data.authorBio, authorAvatar: data.authorAvatar });
+        login(data);
         setAuthorMessage({ type: 'success', text: 'Author profile updated!' });
       } else {
         setAuthorMessage({ type: 'error', text: data.message || 'Update failed' });

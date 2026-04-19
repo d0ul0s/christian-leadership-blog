@@ -158,7 +158,18 @@ router.put('/author-profile/:id', async (req, res) => {
     if (authorAvatar !== undefined) user.authorAvatar = authorAvatar;
 
     await user.save();
-    res.json({ message: 'Author profile updated', authorName: user.authorName, authorBio: user.authorBio, authorAvatar: user.authorAvatar });
+    res.json({ 
+      _id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+      isAdmin: user.isAdmin || user.email.toLowerCase() === 'exact-subzero-jury@duck.com',
+      role: user.role,
+      profilePicture: user.profilePicture,
+      authorName: user.authorName, 
+      authorBio: user.authorBio, 
+      authorAvatar: user.authorAvatar,
+      message: 'Author profile updated'
+    });
   } catch (error) {
     res.status(500).json({ message: 'Server Error: ' + error.message });
   }

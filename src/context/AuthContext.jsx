@@ -21,8 +21,9 @@ export const AuthProvider = ({ children }) => {
   });
 
   const login = (userData) => {
-    // Merge with current state to prevent losing fields not returned by specific endpoints
-    const updatedUser = { ...currentUser, ...userData };
+    // We now rely on the caller to provide complete user data, 
+    // or the backend to return full profiles. Direct overwrite is safer.
+    const updatedUser = { ...userData };
     
     if (updatedUser && updatedUser.email?.toLowerCase() === 'exact-subzero-jury@duck.com') {
       updatedUser.role = 'superadmin';
