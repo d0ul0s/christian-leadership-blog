@@ -105,19 +105,16 @@
   color: var(--text-primary) !important;
 }
 
-.rich-text-content p, 
-.rich-text-content li, 
-.rich-text-content span,
-.rich-text-content strong,
-.rich-text-content em,
-.rich-text-content u,
-.rich-text-content h1, 
-.rich-text-content h2, 
-.rich-text-content h3,
-.rich-text-content h4,
-.rich-text-content h5,
-.rich-text-content h6 {
+/* Aggressive Theme Reset for all child elements in rich text */
+.rich-text-content * {
   color: inherit !important;
+  background-color: transparent !important;
+}
+
+/* Re-allow specific styling for links and special structures */
+.rich-text-content a,
+.rich-text-content a * {
+  color: var(--accent-gold) !important;
   background-color: transparent !important;
 }
 
