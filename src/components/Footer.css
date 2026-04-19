@@ -1,0 +1,28 @@
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--glass-border);
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-mission {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-family: var(--font-serif);
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.copyright {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,253 @@
+:root, [data-theme='ivory-scholar'] {
+  /* Typography & Layout defaults */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Ivory Scholar (Light) */
+  --bg-primary: #FCFBF8;
+  --bg-primary-rgb: 252, 251, 248;
+  --bg-secondary: #F4F0EA;
+  --bg-card: #FFFFFF;
+  --text-primary: #1E293B;
+  --text-secondary: #475569;
+  --accent-gold: #b48600;
+  --accent-gold-hover: #8c6800;
+  --accent-dark: #ebb305;
+  
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.04);
+  --shadow-subtle: 0 20px 50px rgba(20, 25, 40, 0.08); /* Massive diffuse premium shadow */
+}
+
+[data-theme='midnight-servant'] {
+  /* The Midnight Servant (Dark) */
+  --bg-primary: #0a0f18;
+  --bg-primary-rgb: 10, 15, 24;
+  --bg-secondary: #131b2b;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-gold: #ebb305;
+  --accent-gold-hover: #fcd34d;
+  --accent-dark: #b48600;
+  
+  --glass-bg: rgba(10, 15, 24, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='crimson-martyr'] {
+  /* The Crimson Martyr (Dark) */
+  --bg-primary: #2a0a0a;
+  --bg-primary-rgb: 42, 10, 10;
+  --bg-secondary: #3d0c0c;
+  --bg-card: rgba(255, 235, 235, 0.03);
+  --text-primary: #fdf6f5;
+  --text-secondary: #e5baba;
+  --accent-gold: #d4af37;
+  --accent-gold-hover: #f3d57b;
+  --accent-dark: #aa841e;
+  
+  --glass-bg: rgba(42, 10, 10, 0.75);
+  --glass-border: rgba(255, 235, 235, 0.1);
+  --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='ancient-abbey'] {
+  /* The Ancient Abbey (Dark) */
+  --bg-primary: #0f1c16;
+  --bg-primary-rgb: 15, 28, 22;
+  --bg-secondary: #162a21;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --text-primary: #f0f7f4;
+  --text-secondary: #9fbba9;
+  --accent-gold: #c9a25b;
+  --accent-gold-hover: #e5c381;
+  --accent-dark: #9c7b3c;
+  
+  --glass-bg: rgba(15, 28, 22, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='modern-minimalist'] {
+  /* Modern Minimalist (Light) */
+  --bg-primary: #ffffff;
+  --bg-primary-rgb: 255, 255, 255;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-primary: #020617;
+  --text-secondary: #64748b;
+  --accent-gold: #2563eb; /* Royal blue */
+  --accent-gold-hover: #1d4ed8;
+  --accent-dark: #3b82f6;
+  
+  --glass-bg: #ffffff;
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --shadow-subtle: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Layout Classes */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Account for sticky nav */
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-gold), #fcd34d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Animations */
+:root {
+  --anim-duration: 0.8s;
+}
+
+body[data-animation="fast"] {
+  --anim-duration: 0.2s;
+}
+
+body[data-animation="none"] {
+  --anim-duration: 0.01s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp var(--anim-duration) ease-out forwards;
+}
+
+.animate-dropdown {
+  animation: fadeInUp 0.2s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Scale delays for fast mode */
+body[data-animation="fast"] .delay-100 { animation-delay: 50ms; }
+body[data-animation="fast"] .delay-200 { animation-delay: 100ms; }
+body[data-animation="fast"] .delay-300 { animation-delay: 150ms; }
+
+/* Disable delays completely when disabled */
+body[data-animation="none"] .delay-100,
+body[data-animation="none"] .delay-200,
+body[data-animation="none"] .delay-300 {
+  animation-delay: 0s;
+}
+
+/* Global Button Style */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-gold);
+  color: var(--bg-primary);
+  font-weight: 600;
+  border-radius: 30px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(235, 179, 5, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(235, 179, 5, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}

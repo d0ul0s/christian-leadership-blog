@@ -1,0 +1,150 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: var(--transition-smooth);
+}
+
+.navbar.scrolled {
+  padding: 1rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-subtle);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.logo-icon {
+  color: var(--accent-gold);
+}
+
+.logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logo-text .text-light {
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links.desktop-nav {
+  flex: 2;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.nav-auth.desktop-nav {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* Remove underline effect from button */
+.auth-btn::after {
+  display: none;
+}
+
+.mobile-toggle {
+  display: none;
+  color: var(--text-primary);
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .mobile-nav {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .mobile-nav.open {
+    max-height: 100vh;
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .mobile-nav-inner {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .mobile-link::after {
+    display: none;
+  }
+}

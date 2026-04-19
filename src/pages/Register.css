@@ -1,0 +1,140 @@
+.register-page {
+  padding: 4rem 0 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+}
+
+.register-box {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glow effect behind the form */
+.register-box::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.register-box::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-dark);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.register-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.register-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.input-icon-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.6;
+  transition: color 0.3s;
+}
+
+.form-control.has-icon {
+  padding-left: 3rem;
+}
+
+.form-control.has-icon:focus + .input-icon {
+  color: var(--accent-gold);
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.checkbox-custom {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+  cursor: pointer;
+  accent-color: var(--accent-gold);
+}
+
+.form-check label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.text-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.text-link:hover {
+  text-decoration-color: var(--accent-gold);
+}
+
+.register-footer {
+  margin-top: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1.5rem;
+}
+
+.register-footer p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 576px) {
+  .register-box {
+    padding: 2rem;
+  }
+}

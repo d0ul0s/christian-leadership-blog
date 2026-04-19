@@ -1,0 +1,73 @@
+.contact-page {
+  padding: 4rem 0 6rem;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.contact-header .hero-subtitle {
+  margin: 0 auto;
+}
+
+.contact-grid {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  padding: 3rem;
+}
+
+/* Form Styles used globally for Contact and Register */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  background: var(--bg-secondary);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(235, 179, 5, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 2rem;
+  }
+}
