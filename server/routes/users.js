@@ -57,7 +57,11 @@ router.put('/profile/:id', async (req, res) => {
       fullName: user.fullName,
       email: user.email,
       isAdmin: user.isAdmin || user.email.toLowerCase() === 'exact-subzero-jury@duck.com',
+      role: user.role,
       profilePicture: user.profilePicture,
+      authorName: user.authorName,
+      authorBio: user.authorBio,
+      authorAvatar: user.authorAvatar,
       message: 'Profile updated successfully'
     });
   } catch (error) {

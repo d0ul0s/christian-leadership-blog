@@ -43,6 +43,9 @@ router.post('/register', async (req, res) => {
            isAdmin: user.isAdmin,
            role: user.role,
            profilePicture: user.profilePicture,
+           authorName: user.authorName,
+           authorBio: user.authorBio,
+           authorAvatar: user.authorAvatar,
            isVerified: true,
            message: "User successfully registered!"
          });
@@ -86,6 +89,9 @@ router.post('/verify', async (req, res) => {
       isAdmin: user.isAdmin || user.email.toLowerCase() === 'exact-subzero-jury@duck.com',
       role: user.role,
       profilePicture: user.profilePicture,
+      authorName: user.authorName,
+      authorBio: user.authorBio,
+      authorAvatar: user.authorAvatar,
       message: 'Email verified successfully!'
     });
   } catch (err) {
@@ -145,6 +151,9 @@ router.post('/login', async (req, res) => {
       isAdmin: user.isAdmin || user.email.toLowerCase() === 'exact-subzero-jury@duck.com',
       role: user.role,
       profilePicture: user.profilePicture,
+      authorName: user.authorName,
+      authorBio: user.authorBio,
+      authorAvatar: user.authorAvatar,
       message: 'Login successful!'
     });
   } catch (error) {

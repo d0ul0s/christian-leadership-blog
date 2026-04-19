@@ -21,12 +21,15 @@ export const AuthProvider = ({ children }) => {
   });
 
   const login = (userData) => {
-    if (userData && userData.email?.toLowerCase() === 'exact-subzero-jury@duck.com') {
-      userData.role = 'superadmin';
-      userData.isAdmin = true;
+    // Merge with current state to prevent losing fields not returned by specific endpoints
+    const updatedUser = { ...currentUser, ...userData };
+    
+    if (updatedUser && updatedUser.email?.toLowerCase() === 'exact-subzero-jury@duck.com') {
+      updatedUser.role = 'superadmin';
+      updatedUser.isAdmin = true;
     }
-    localStorage.setItem('currentUser', JSON.stringify(userData));
-    setCurrentUser(userData);
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+    setCurrentUser(updatedUser);
   };
 
   const logout = () => {
