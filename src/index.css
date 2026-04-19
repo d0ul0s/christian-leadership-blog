@@ -281,11 +281,17 @@ body[data-animation="none"] .delay-300 {
   border-radius: 0 0 8px 8px !important;
 }
 
+
 .ql-editor {
   color: var(--text-primary) !important;
   min-height: 300px;
   font-size: 1.05rem;
   line-height: 1.6;
+}
+
+/* Force all pasted/nested elements to inherit theme colors */
+.ql-editor * {
+  color: inherit !important;
 }
 
 .ql-editor.ql-blank::before {
