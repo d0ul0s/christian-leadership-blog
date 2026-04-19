@@ -225,6 +225,7 @@ body[data-animation="none"] .delay-300 {
   animation-delay: 0s;
 }
 
+
 /* Global Button Style */
 .btn-primary {
   display: inline-flex;
@@ -261,4 +262,65 @@ body[data-animation="none"] .delay-300 {
 .btn-secondary:hover {
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* React Quill Dark Mode Overrides */
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  border-color: var(--glass-border) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.ql-toolbar.ql-snow {
+  border-bottom: none !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 8px 8px !important;
+}
+
+.ql-editor {
+  color: var(--text-primary) !important;
+  min-height: 300px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--text-secondary) !important;
+  opacity: 0.5;
+}
+
+/* Dark mode toolbar icons and pickers */
+[data-theme='midnight-servant'] .ql-snow .ql-stroke,
+[data-theme='crimson-martyr'] .ql-snow .ql-stroke,
+[data-theme='ancient-abbey'] .ql-snow .ql-stroke {
+  stroke: var(--text-primary) !important;
+}
+
+[data-theme='midnight-servant'] .ql-snow .ql-fill,
+[data-theme='crimson-martyr'] .ql-snow .ql-fill,
+[data-theme='ancient-abbey'] .ql-snow .ql-fill {
+  fill: var(--text-primary) !important;
+}
+
+[data-theme='midnight-servant'] .ql-snow .ql-picker,
+[data-theme='crimson-martyr'] .ql-snow .ql-picker,
+[data-theme='ancient-abbey'] .ql-snow .ql-picker {
+  color: var(--text-primary) !important;
+}
+
+[data-theme='midnight-servant'] .ql-snow .ql-picker-options,
+[data-theme='crimson-martyr'] .ql-snow .ql-picker-options,
+[data-theme='ancient-abbey'] .ql-snow .ql-picker-options {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--glass-border) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-subtle) !important;
+}
+
+.ql-snow .ql-picker-item:hover {
+  color: var(--accent-gold) !important;
 }
