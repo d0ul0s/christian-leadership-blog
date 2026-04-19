@@ -44,7 +44,7 @@ const Admin = () => {
   const fetchUsers = async () => {
     setIsLoadingUsers(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
+      const res = await fetch(`${getCleanApiUrl()}/api/users`, {
         headers: { 'x-user-id': currentUser._id }
       });
       if (res.ok) {
@@ -58,7 +58,7 @@ const Admin = () => {
   const fetchMessages = async () => {
     setIsLoadingMessages(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/messages`, {
+      const res = await fetch(`${getCleanApiUrl()}/api/messages`, {
         headers: { 'x-user-id': currentUser._id }
       });
       if (res.ok) {
@@ -79,7 +79,7 @@ const Admin = () => {
     if (!adminPassword) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}/role`, { 
+      const res = await fetch(`${getCleanApiUrl()}/api/users/${userId}/role`, { 
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const Admin = () => {
     const isConfirmed = await confirm("Are you sure you want to delete this user?");
     if (!isConfirmed) return;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, { 
+      const res = await fetch(`${getCleanApiUrl()}/api/users/${userId}`, { 
         method: 'DELETE',
         headers: { 'x-user-id': currentUser._id }
       });
@@ -117,7 +117,7 @@ const Admin = () => {
     const isConfirmed = await confirm("Are you sure you want to delete this message?");
     if (!isConfirmed) return;
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/messages/${msgId}`, { 
+      const res = await fetch(`${getCleanApiUrl()}/api/messages/${msgId}`, { 
         method: 'DELETE',
         headers: { 'x-user-id': currentUser._id }
       });
@@ -131,7 +131,7 @@ const Admin = () => {
   const fetchAdminArticles = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/articles/admin/all`, {
+      const res = await fetch(`${getCleanApiUrl()}/api/articles/admin/all`, {
         headers: { 'x-user-id': currentUser._id }
       });
       const data = await res.json();
@@ -141,6 +141,11 @@ const Admin = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const getCleanApiUrl = () => {
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+    return apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
   };
 
 
@@ -158,25 +163,41 @@ const Admin = () => {
     const file = e.target.files[0];
     if (!file) return;
 
+    // Optional: Add file size check (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('File too large. Max 5MB.', 'error');
+      return;
+    }
+
     const data = new FormData();
     data.append('image', file);
     
     setIsUploading(true);
+    const baseUrl = getCleanApiUrl();
+    
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
+      const res = await fetch(`${baseUrl}/api/upload`, {
         method: 'POST',
         body: data
       });
       const result = await res.json();
+      
       if (res.ok) {
-        const fullUrl = result.url.startsWith('http') ? result.url : `${import.meta.env.VITE_API_URL}${result.url}`;
-        setFormData(prev => ({ ...prev, [fieldName]: fullUrl }));
+        // Build robust full URL
+        let imageUrl = result.url;
+        if (!imageUrl.startsWith('http')) {
+          const cleanPath = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`;
+          imageUrl = `${baseUrl}${cleanPath}`;
+        }
+        
+        setFormData(prev => ({ ...prev, [fieldName]: imageUrl }));
+        showToast('Image uploaded successfully', 'success');
       } else {
         showToast(result.message || 'Upload failed', 'error');
       }
     } catch (err) {
       console.error(err);
-      showToast('Error uploading image', 'error');
+      showToast('Error uploading image. Is the server running?', 'error');
     } finally {
       setIsUploading(false);
     }
@@ -196,7 +217,7 @@ const Admin = () => {
     const isConfirmed = await confirm("Are you sure you want to permanently delete this article? This action cannot be reversed!");
     if (!isConfirmed) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/articles/${articleId}`, { 
+      await fetch(`${getCleanApiUrl()}/api/articles/${articleId}`, { 
         method: 'DELETE', 
         headers: { 'x-user-id': currentUser._id }
       });
@@ -210,7 +231,7 @@ const Admin = () => {
 
   const handleUpdateStatus = async (article, newStatus) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/api/articles/${article.articleId}`, {
+      await fetch(`${getCleanApiUrl()}/api/articles/${article.articleId}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -228,9 +249,10 @@ const Admin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const method = isEditing ? 'PUT' : 'POST';
+    const baseUrl = getCleanApiUrl();
     const url = isEditing 
-      ? `${import.meta.env.VITE_API_URL}/api/articles/${formData.articleId}` 
-      : `${import.meta.env.VITE_API_URL}/api/articles`;
+      ? `${baseUrl}/api/articles/${formData.articleId}` 
+      : `${baseUrl}/api/articles`;
       
     try {
       const res = await fetch(url, {
